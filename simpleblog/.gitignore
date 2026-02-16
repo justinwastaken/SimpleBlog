@@ -1,0 +1,42 @@
+# Virtuelle Umgebung
+virtenv/
+venv/
+env/
+
+# Python Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django Datenbank
+db.sqlite3
+
+# Django Migrations (optional, falls du Migrationen nicht tracken willst)
+# migrations/
+# Wenn du Migrationen tracken möchtest, dann diese Zeile auskommentieren.
+
+# Django static files (falls du collectstatic nutzt)
+staticfiles/
+
+# VSCode
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Logs
+*.log
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Pytest cache
+.pytest_cache/
+
+# mypy cache
+.mypy_cache/
+
+# env files
+.env
