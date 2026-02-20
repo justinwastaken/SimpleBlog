@@ -10,7 +10,12 @@
 
 <ul>
 {%for post in object_list%}
-    <li><a href="{% url 'blog-details' post.pk %}">{{ post.title }}</a> from {{ post.author }}<br/> 
+    <li><a href="{% url 'blog-details' post.pk %}">
+        {{ post.title }}
+        </a> from {{ post.author }} - <a href ="{% url 'update_post' post.pk %}">
+            Edit
+        </a>
+    <br/>
         {{ post.body }}
     </li>
     {% empty %}
