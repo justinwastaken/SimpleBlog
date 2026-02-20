@@ -1,11 +1,15 @@
 {% extends 'index.html' %}
-{% block title%} {{ post.title }} {% endblock %}
+{% block title %} {{ post.title }} {% endblock %}
 
 {% block content %}
 
 
 <h1>{{ post.title }}</h1>
-<small>By: {{ post.author.get_full_name }}</small><br/>
+<small>By: {{ post.author.get_full_name }} - Created: {{ post.created_at }} |
+       <a href="{% url 'update_post' post.pk%}">edit</a> |
+       <a href="{% url 'delete_post' post.pk%}">delete</a>
+
+</small><br/>
 <hr>
 <br/>
 {{ post.body }}

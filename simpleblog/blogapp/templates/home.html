@@ -7,12 +7,26 @@
 
 
 <h1>Posts</h1>
-
 <ul>
+    <div class="mb3">
+        <strong>Sort by:</strong>
+
+        <a href="?order=newest"
+           class="btn btn-sm {% if request.GET.order != 'oldest' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+            Newest
+        </a>
+
+        <a href="?order=oldest"
+           class="btn btn-sm {% if request.Get.order == 'oldest' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+            Oldest
+        </a>
+    </a>
+    </div>
+    <br/> <br/>
 {%for post in object_list%}
     <li><a href="{% url 'blog-details' post.pk %}">
         {{ post.title }}
-        </a> from {{ post.author }} - <small><a href ="{% url 'update_post' post.pk %}">
+        </a> by: {{ post.author.get_full_name }} - <small><a href ="{% url 'update_post' post.pk %}">
             (Edit)
         </a></small>
     <br/>

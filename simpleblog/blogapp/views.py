@@ -12,6 +12,14 @@ class HomeView(ListView):
     model = Post
     template_name = 'home.html'
 
+    def get_queryset(self):
+        order = self.request.GET.get("order")
+
+        if order == "oldest":
+            return Post.objects.order_by("created_at")
+        else:
+            return Post.objects.order_by("-created_at")
+
 class BlogDetailView(DetailView):
     model = Post
     template_name = 'blog_details.html'
