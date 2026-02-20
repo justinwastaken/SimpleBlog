@@ -12,9 +12,9 @@
 {%for post in object_list%}
     <li><a href="{% url 'blog-details' post.pk %}">
         {{ post.title }}
-        </a> from {{ post.author }} - <a href ="{% url 'update_post' post.pk %}">
-            Edit
-        </a>
+        </a> from {{ post.author }} - <small><a href ="{% url 'update_post' post.pk %}">
+            (Edit)
+        </a></small>
     <br/>
         {{ post.body }}
     </li>
