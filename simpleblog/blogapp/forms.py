@@ -8,7 +8,7 @@ class PostForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your Title.'}),
-            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'What do you wanna talk about.'}), 
+            
         }
 
 class UpdateForm(forms.ModelForm):
@@ -18,5 +18,5 @@ class UpdateForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your Title.'}),
-            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'What do you wanna talk about.'}), 
+            
         }

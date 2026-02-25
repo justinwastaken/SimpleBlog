@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blogapp',
     'accounts',
+    'django_ckeditor_5',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +123,17 @@ STATIC_URL = 'static/'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+CKEDITOR_5_CONFIGS = {
+    'extends': {
+        'toolbar': [
+            'heading', '|',
+            'bold', 'italic', 'link',
+            'bulletedList', 'numberedList',
+            'blockQuote', 'imageUpload'
+        ],
+    }
+}

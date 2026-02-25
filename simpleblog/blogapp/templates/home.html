@@ -38,7 +38,7 @@
                     </small>
         {% endif %}
     <br/>
-        {{ post.body | truncatechars:25}}
+        {{ post.body | truncatechars:50 | safe}}
             </li>
         {% empty %}
             <li>No Posts available.</li>
