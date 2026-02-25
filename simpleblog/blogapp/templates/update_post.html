@@ -2,6 +2,7 @@
 {% block title %} Update your Blog Post! {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
 
 <h1>Edit Blog Post</h1>
 </br>
@@ -13,6 +14,8 @@
     <a href="{% url 'delete_post' object.pk %}" class="btn btn-danger">Delete Post</a>
 </form>
 
+{% else %}
+Please authorize yourself before you enter this url.
 
-
+{% endif %}
 {% endblock %}

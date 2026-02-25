@@ -22,19 +22,27 @@
         </a>
     </a>
     </div>
-    <br/> <br/>
-{%for post in object_list%}
-    <li><a href="{% url 'blog-details' post.pk %}">
-        {{ post.title }}
-        </a> by: {{ post.author.get_full_name }} - <small><a href ="{% url 'update_post' post.pk %}">
-            (Edit)
-        </a></small>
+    <br/> 
     <br/>
-        {{ post.body }}
-    </li>
-    {% empty %}
-    <li>No Posts available.</li>
-{% endfor %}
+        {%for post in object_list%}
+            <li>
+                <a href="{% url 'blog-details' post.pk %}">
+                    {{ post.title }}
+                </a> by: {{ post.author.get_full_name }}
+
+                {% if user.is_authenticated %}
+                    <small>
+                        - <a href ="{% url 'update_post' post.pk %}">
+                            (Edit)
+                        </a>
+                    </small>
+        {% endif %}
+    <br/>
+        {{ post.body | truncatechars:25}}
+            </li>
+        {% empty %}
+            <li>No Posts available.</li>
+        {% endfor %}
 </ul>
 
 {% endblock %}

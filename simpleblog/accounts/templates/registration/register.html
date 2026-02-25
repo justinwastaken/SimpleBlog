@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block title %} Create your Account! {% endblock %}
+
+{% block content %}
+
+<h1>Register</h1>
+</br>
+</br>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-secondary">Register</button>
+</form>
+
+
+
+{% endblock %}

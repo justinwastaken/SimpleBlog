@@ -2,6 +2,7 @@
 {% block title %} Create a new Blog Post! {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
 
 <h2>Are you sure you want to delete this Post?</h2>
 </br>
@@ -12,6 +13,8 @@
     <button class="btn btn-danger">Yes, delete</button>
 </form>
 
+{% else %}
+Please authorize yourself before you enter this url.
 
-
+{% endif %}
 {% endblock %}
