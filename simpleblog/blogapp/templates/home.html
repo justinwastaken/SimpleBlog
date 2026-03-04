@@ -28,7 +28,10 @@
             <li>
                 <a href="{% url 'blog-details' post.pk %}">
                     {{ post.title }} 
-                </a>  by: {{ post.author.get_full_name }} - {{post.created_at}} - {{post.category}}
+                </a>  by: {{ post.author.get_full_name }} - {{post.created_at}} - Category:
+                    <a href="{% url 'category' post.category.slug %}">
+                        {{ post.category }}
+                    </a>
 
                 {% if user.is_authenticated %}
                     <small>

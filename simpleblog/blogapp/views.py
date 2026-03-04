@@ -46,5 +46,19 @@ class DeletePostView(DeleteView):
 
 class AddCategoryView(CreateView):
     model = Category
-    fields = ['name']
+    form_class = CategoryForm
     template_name = 'add_category.html'
+
+class CategoryView(ListView):
+    model = Post
+    template_name = "category.html"
+    context_object_name = "posts"
+
+    def get_queryset(self):
+        self.category = Category.objects.get(slug=self.kwargs['slug'])
+        return Post.objects.filter(category=self.category).select_related("category")
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category'] = self.category
+        return context

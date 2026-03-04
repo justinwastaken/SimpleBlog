@@ -2,20 +2,31 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django_ckeditor_5.fields import CKEditor5Field
+from django.utils.text import slugify
 
 # Create your models here.
 
 class Category(models.Model):
-    name = models.CharField(max_length=255, default="weight lifting", unique=True)
+    name = models.CharField(
+        max_length=255, 
+        default="weight lifting", 
+        unique=True,
+        error_messages={
+            "unique": "Diese Kategorie existiert bereits"
+        }
+    )
+
+    slug = models.SlugField(unique=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.name.title()
     
     def get_absolute_url(self):
-        return reverse('home')
+        return reverse('category', args=[self.slug])
     
     def save(self, *args, **kwargs):
         self.name = self.name.lower()
+        self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
 class Post(models.Model):
